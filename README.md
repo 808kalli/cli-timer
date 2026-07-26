@@ -79,15 +79,20 @@ built from the same tiles as the digits, and its two eyes are simply left
 unpainted so the background shows through them.
 
 ```
-  ██████          ██████
-  █ ██ █          ██████
-  ██████          ██████
-   awake           asleep
+  ████████    ████████    ████████    ████████
+  ████████    ███ ██ █    █ ██ ███    ████████
+  ██ ██ ██    ████████    ████████    ████████
+  ████████    ████████    ████████    ████████
+    ahead     glancing    glancing      eyes
+               right         left       shut
 ```
 
-It moves by random walk, so it drifts around instead of pacing a fixed route.
-It blinks now and then, and shuts its eyes and stays put while the timer is
-paused. Hide it with `--no-slime`.
+It mostly sits still, then crosses the floor in one purposeful trip — never
+less than a quarter of the width — and settles again. Every so often it
+glances up at the clock, shifting its eyes a tile up and a tile toward the
+middle, and holds that look for one to four blinks spaced three to four
+seconds apart before facing front again. While the timer is paused it stays
+put with its eyes shut. Hide it with `--no-slime`.
 
 ### Themes
 
