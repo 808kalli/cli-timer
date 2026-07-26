@@ -79,13 +79,13 @@ built from the same tiles as the digits, and its two eyes are simply left
 unpainted so the background shows through them.
 
 ```
-  ████████    ████████    ████████    ████████    ████████
-  ████████    ███ ██ █    ████████    ████████    ████████
-  ██ ██ ██    ████████    ███ ██ █    █  ██  █    ████████
-  ████████    ████████    ████████    ████████    ████████
-   stopped    glancing     heading      startled     eyes
-                up at        right      by the       shut
-              the clock                 pointer
+  ████████    ████████    ████████    ████████
+  ████████    ███ ██ █    ████████    ████████
+  ██ ██ ██    ████████    ███ ██ █    ████████
+  ████████    ████████    ████████    ████████
+   stopped    glancing     heading      eyes
+                up at        right      shut
+              the clock
 ```
 
 It mostly sits still, then crosses the floor in one purposeful trip — never
@@ -105,8 +105,19 @@ stays put with its eyes shut. Hide it with `--no-slime`.
 
 #### Hovering
 
-Point at the slime and it stops, stares straight ahead and widens its eyes
-until you move away.
+Point at the slime and it startles: it stops and looks straight at you for a
+moment, jumps a block into the air, hangs there for half a second, then drops
+back down. It keeps watching you until you move away.
+
+```
+  ████████                          ████████
+  ████████     jumps    ████████    ████████
+  ██ ██ ██      ──▶     ████████    ██ ██ ██
+  ████████              ██ ██ ██    ████████
+ ▔▔▔▔▔▔▔▔▔▔            ████████    ▔▔▔▔▔▔▔▔▔▔
+   noticed            ▔▔▔▔▔▔▔▔▔▔      lands
+     you               in the air
+```
 
 Terminals have no hover event, so this is synthesised from mouse motion
 reports: the app enables `?1003h` (report all motion) with `?1006h` (SGR
