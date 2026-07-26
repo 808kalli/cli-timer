@@ -149,6 +149,9 @@ cyber-timer sw --title "LAP"
 - The display fills the terminal and re-lays out on resize. On terminals too
   narrow for the segment font it falls back to a plain readout rather than
   breaking the layout.
+- Digits never grow taller than their width allows, so a tall but narrow
+  terminal renders them at their natural proportions instead of stretching
+  them into ribbons.
 - Everything is drawn on the alternate screen buffer, so your scrollback is
   left untouched when the timer exits.
 
