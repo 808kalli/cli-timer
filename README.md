@@ -79,12 +79,13 @@ built from the same tiles as the digits, and its two eyes are simply left
 unpainted so the background shows through them.
 
 ```
-  ████████    ████████    ████████    ████████
-  ████████    ███ ██ █    █ ██ ███    ████████
-  ██ ██ ██    ████████    ████████    ████████
-  ████████    ████████    ████████    ████████
-    ahead     glancing    glancing      eyes
-               right         left       shut
+  ████████    ████████    ████████    ████████    ████████
+  ████████    ███ ██ █    ████████    ████████    ████████
+  ██ ██ ██    ████████    ███ ██ █    █  ██  █    ████████
+  ████████    ████████    ████████    ████████    ████████
+   stopped    glancing     heading      startled     eyes
+                up at        right      by the       shut
+              the clock                 pointer
 ```
 
 It mostly sits still, then crosses the floor in one purposeful trip — never
@@ -93,11 +94,36 @@ glances up at the clock, shifting its eyes a tile up and a tile toward the
 middle, and holds that look for one to four blinks spaced three to four
 seconds apart before facing front again.
 
-Its eyes never swing across while shut. The direction is fixed for the whole
-of a blink and can only change at the moment the eyes reopen, so if it crossed
-the middle of the terminal during a glance, the next blink hides the switch
-and it reopens looking the other way. While the timer is paused it stays put
-with its eyes shut. Hide it with `--no-slime`.
+At rest its eyes sit low, turned whichever way it is travelling, and look
+straight down once it stops.
+
+Its eyes never swing across while shut. The glance direction is fixed for the
+whole of a blink and can only change at the moment the eyes reopen, so if it
+crossed the middle of the terminal during a glance, the next blink hides the
+switch and it reopens looking the other way. While the timer is paused it
+stays put with its eyes shut. Hide it with `--no-slime`.
+
+#### Hovering
+
+Point at the slime and it stops, stares straight ahead and widens its eyes
+until you move away.
+
+Terminals have no hover event, so this is synthesised from mouse motion
+reports: the app enables `?1003h` (report all motion) with `?1006h` (SGR
+coordinates) and hit-tests each report against where the slime is standing.
+That means support depends on the terminal:
+
+| Works | Needs a setting | No hover |
+| ----- | --------------- | -------- |
+| iTerm2, Kitty, Alacritty, WezTerm, Ghostty, Windows Terminal, GNOME Terminal and other VTE terminals (Tilix, Terminator), Konsole, xterm, Tabby/Terminus, VS Code's terminal | tmux (`set -g mouse on`), GNU screen (`mousetrack on`) | Terminals that do not implement motion reporting, and most plain TTY consoles |
+
+Where it is unsupported the escape codes are ignored and the slime simply
+never notices the pointer — nothing else changes.
+
+While tracking is on, click-and-drag text selection is captured by the app.
+Most terminals still allow selection with a modifier held (`Shift` on
+xterm/VTE, `Option` on iTerm2). Pass `--no-mouse` to turn tracking off
+entirely and get normal selection back.
 
 ### Themes
 
@@ -135,7 +161,8 @@ Quitting early prints how much time was left (countdown) or how long it ran
 | `-t, --title <text>` | label in the title bar (default `CYBER TIMER` / `STOPWATCH`)  |
 | `-s, --silent`       | disable the completion beep (countdown only)                  |
 | `-i, --invert`       | start in the flipped panel theme                              |
-| `--no-slime`         | hide the hopping slime                                        |
+| `--no-slime`         | hide the slime                                                |
+| `--no-mouse`         | disable mouse tracking (no hover, normal text selection)      |
 | `-h, --help`         | show help                                                     |
 
 ```bash
