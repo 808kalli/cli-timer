@@ -59,9 +59,13 @@ Options:
 
 Keys:
 
-- `Tab` — flip between the dark theme (orange on your terminal background) and
-  the inverted light theme (dark orange on white). Toggle as often as you like;
-  the timer keeps running.
+- `Space` — record a lap. Laps are listed in the bottom-left corner with the
+  split from the previous one, and the full list is printed to your terminal
+  when you exit. The six most recent are kept on screen; older ones scroll off
+  the display but still appear in the exit list.
+- `Tab` — flip between the dark theme (muted orange on your terminal
+  background) and the inverted theme (dark orange on grey). Toggle as often as
+  you like; the timer keeps running.
 - `q` / `Ctrl+C` — quit
 
 Examples:
