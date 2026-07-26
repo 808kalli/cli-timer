@@ -1,32 +1,26 @@
-# cyber-timer
+# cli-timer
 
-A full-screen, neon/cyberpunk countdown timer and stopwatch for your
-terminal. It takes over the whole window, draws a glowing box around the
-edge, and shows the time in a big blocky digital font.
+A full-screen countdown timer and stopwatch for your terminal, rendered in a
+solid seven-segment font with a warm ember palette.
+
+![Countdown timer](docs/countdown.png)
 
 ## Install
 
-Requires [Node.js](https://nodejs.org) 14 or newer.
-
-Install directly from GitHub — no cloning, no build step:
+Requires [Node.js](https://nodejs.org) 14 or newer. No build step, no
+dependencies.
 
 ```bash
-npm install -g github:e.kallioras/cyber-timer
+npm install -g github:808kalli/cli-timer
 ```
 
-That's it. `cyber-timer` is now a command available in any terminal on your
-machine.
+`cyber-timer` is now available as a command in any terminal. To upgrade, run
+the same command again; to remove it, `npm uninstall -g cyber-timer`.
 
-To upgrade later, run the same command again. To remove it:
-
-```bash
-npm uninstall -g cyber-timer
-```
-
-Prefer not to install anything permanently? Run it on demand instead:
+Prefer not to install it permanently? Run it on demand:
 
 ```bash
-npx github:e.kallioras/cyber-timer 25
+npx github:808kalli/cli-timer 25
 ```
 
 ## Usage
@@ -36,39 +30,76 @@ cyber-timer <duration> [options]   # countdown
 cyber-timer stopwatch [options]    # count up (alias: sw)
 ```
 
-Duration formats (countdown mode):
+### Countdown
 
-| Input      | Meaning          |
-| ---------- | ---------------- |
-| `25`       | 25 minutes       |
-| `25m`      | 25 minutes       |
-| `90s`      | 90 seconds       |
-| `1h30m`    | 1 hour 30 minutes|
-| `10:00`    | mm:ss            |
-| `1:10:00`  | hh:mm:ss         |
+Pass a duration in whichever format is most natural:
 
-The time is always shown as `hh:mm:ss`, so the hours field stays on screen
-even at `00` and the readout never changes width.
+| Input     | Meaning            |
+| --------- | ------------------ |
+| `25`      | 25 minutes         |
+| `25m`     | 25 minutes         |
+| `90s`     | 90 seconds         |
+| `1h30m`   | 1 hour 30 minutes  |
+| `10:00`   | mm:ss              |
+| `1:10:00` | hh:mm:ss           |
 
-Options:
+A progress bar tracks how much of the duration has elapsed. When it reaches
+zero the display shifts to the alert color, the terminal beeps three times, and
+it waits for a keypress so a finished timer never disappears unnoticed.
 
-- `-t, --title <text>` — custom label in the title bar (default `CYBER TIMER` / `STOPWATCH`)
-- `-s, --silent` — disable the completion beep (countdown only)
-- `-i, --invert` — start in the flipped theme
-- `-h, --help` — show help
+![Finished timer](docs/finished.png)
 
-Keys:
+### Stopwatch
 
-- `Space` — record a lap. Laps are listed in the bottom-left corner with the
-  split from the previous one, and the full list is printed to your terminal
-  when you exit. The six most recent are kept on screen; older ones scroll off
-  the display but still appear in the exit list.
-- `Tab` — flip between the default theme (muted ember on your terminal
-  background) and the flipped theme (warm amber on a dark grey panel). Toggle
-  as often as you like; the timer keeps running.
-- `q` / `Ctrl+C` — quit
+```bash
+cyber-timer stopwatch
+```
 
-Examples:
+Counts up from zero with no upper bound. Press `Space` to record laps, which
+are listed in the bottom-left with the split from the previous lap.
+
+![Stopwatch with laps](docs/stopwatch_laps.png)
+
+The six most recent laps stay on screen, and the digits shrink to make room
+rather than being pushed off-center. The **full** list is printed to your
+terminal on exit, so nothing is lost when the display closes:
+
+```
+Stopped — elapsed 00:03:47
+  LAP 01  00:00:41
+  LAP 02  00:01:35  +00:00:54
+  LAP 03  00:02:38  +00:01:03
+  LAP 04  00:03:25  +00:00:47
+```
+
+### Themes
+
+`Tab` flips between the default theme — muted ember drawn straight onto your
+terminal background — and a dark grey panel carrying a brighter amber. Start in
+the flipped theme with `--invert`.
+
+![Flipped theme](docs/flipped.png)
+
+## Keys
+
+| Key      | Action                                             |
+| -------- | -------------------------------------------------- |
+| `Space`  | record a lap (listed bottom-left, printed on exit)  |
+| `Tab`    | flip between the default and panel theme            |
+| `q`      | quit                                                |
+| `Ctrl+C` | quit                                                |
+
+Quitting early prints how much time was left (countdown) or how long it ran
+(stopwatch).
+
+## Options
+
+| Flag                 | Description                                                  |
+| -------------------- | ------------------------------------------------------------ |
+| `-t, --title <text>` | label in the title bar (default `CYBER TIMER` / `STOPWATCH`)  |
+| `-s, --silent`       | disable the completion beep (countdown only)                  |
+| `-i, --invert`       | start in the flipped panel theme                              |
+| `-h, --help`         | show help                                                     |
 
 ```bash
 cyber-timer 25
@@ -79,17 +110,33 @@ cyber-timer stopwatch
 cyber-timer sw --title "LAP"
 ```
 
-While running, press `q` or `Ctrl+C` to stop/quit at any time — the elapsed or
-remaining time is printed to your terminal once the app exits. When a
-countdown finishes, press any key to exit.
+## Notes
+
+- The time is always shown as `hh:mm:ss`, so the hours field stays visible at
+  `00` and the readout never changes width as it crosses an hour.
+- The display fills the terminal and re-lays out on resize. On terminals too
+  narrow for the segment font it falls back to a plain readout rather than
+  breaking the layout.
+- Everything is drawn on the alternate screen buffer, so your scrollback is
+  left untouched when the timer exits.
 
 ## Development
 
 ```bash
-git clone https://github.com/e.kallioras/cyber-timer.git
-cd cyber-timer
-npm link
+git clone git@github.com:808kalli/cli-timer.git
+cd cli-timer
+npm link        # makes `cyber-timer` available globally from this checkout
 cyber-timer 5s
+```
+
+The renderer is pure — `lib/render.js` turns state into a string — so layout
+can be inspected without a TTY:
+
+```bash
+node -e "console.log(require('./lib/render').renderFrame({
+  cols: 80, rows: 24, title: 'TEST', mode: 'countdown',
+  remainingSeconds: 1500, totalSeconds: 1500, finished: false, laps: []
+}))"
 ```
 
 ## License

@@ -1,8 +1,8 @@
 {
   "name": "cyber-timer",
   "version": "1.0.0",
-  "description": "A full-screen neon/cyberpunk countdown timer for your terminal",
-  "keywords": ["cli", "timer", "countdown", "terminal", "tui", "cyberpunk"],
+  "description": "A full-screen countdown timer and stopwatch for your terminal",
+  "keywords": ["cli", "timer", "countdown", "stopwatch", "terminal", "tui"],
   "bin": {
     "cyber-timer": "./bin/cli.js"
   },
@@ -16,6 +16,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/e.kallioras/cyber-timer.git"
+    "url": "git+https://github.com/808kalli/cli-timer.git"
   }
 }
