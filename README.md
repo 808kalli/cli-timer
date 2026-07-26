@@ -91,8 +91,13 @@ It mostly sits still, then crosses the floor in one purposeful trip — never
 less than a quarter of the width — and settles again. Every so often it
 glances up at the clock, shifting its eyes a tile up and a tile toward the
 middle, and holds that look for one to four blinks spaced three to four
-seconds apart before facing front again. While the timer is paused it stays
-put with its eyes shut. Hide it with `--no-slime`.
+seconds apart before facing front again.
+
+Its eyes never swing across while shut. The direction is fixed for the whole
+of a blink and can only change at the moment the eyes reopen, so if it crossed
+the middle of the terminal during a glance, the next blink hides the switch
+and it reopens looking the other way. While the timer is paused it stays put
+with its eyes shut. Hide it with `--no-slime`.
 
 ### Themes
 
