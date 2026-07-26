@@ -1,8 +1,8 @@
 # cyber-timer
 
-A full-screen, neon/cyberpunk countdown timer for your terminal. It takes over
-the whole window, draws a glowing box around the edge, and shows the time
-remaining in a big blocky digital font.
+A full-screen, neon/cyberpunk countdown timer and stopwatch for your
+terminal. It takes over the whole window, draws a glowing box around the
+edge, and shows the time in a big blocky digital font.
 
 ## Install
 
@@ -32,10 +32,11 @@ npx github:e.kallioras/cyber-timer 25
 ## Usage
 
 ```bash
-cyber-timer <duration> [options]
+cyber-timer <duration> [options]   # countdown
+cyber-timer stopwatch [options]    # count up (alias: sw)
 ```
 
-Duration formats:
+Duration formats (countdown mode):
 
 | Input      | Meaning          |
 | ---------- | ---------------- |
@@ -48,8 +49,8 @@ Duration formats:
 
 Options:
 
-- `-t, --title <text>` — custom label in the title bar (default `CYBER TIMER`)
-- `-s, --silent` — disable the completion beep
+- `-t, --title <text>` — custom label in the title bar (default `CYBER TIMER` / `STOPWATCH`)
+- `-s, --silent` — disable the completion beep (countdown only)
 - `-h, --help` — show help
 
 Examples:
@@ -58,10 +59,13 @@ Examples:
 cyber-timer 25
 cyber-timer 90s --title "BREAK"
 cyber-timer 1h --silent
+cyber-timer stopwatch
+cyber-timer sw --title "LAP"
 ```
 
-While running, press `q` or `Ctrl+C` to quit. When the timer finishes, press
-any key to exit.
+While running, press `q` or `Ctrl+C` to stop/quit at any time — the elapsed or
+remaining time is printed to your terminal once the app exits. When a
+countdown finishes, press any key to exit.
 
 ## Development
 
