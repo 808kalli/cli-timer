@@ -47,11 +47,22 @@ Duration formats (countdown mode):
 | `10:00`    | mm:ss            |
 | `1:10:00`  | hh:mm:ss         |
 
+The time is always shown as `hh:mm:ss`, so the hours field stays on screen
+even at `00` and the readout never changes width.
+
 Options:
 
 - `-t, --title <text>` — custom label in the title bar (default `CYBER TIMER` / `STOPWATCH`)
 - `-s, --silent` — disable the completion beep (countdown only)
+- `-i, --invert` — start in the inverted light theme
 - `-h, --help` — show help
+
+Keys:
+
+- `Tab` — flip between the dark theme (orange on your terminal background) and
+  the inverted light theme (dark orange on white). Toggle as often as you like;
+  the timer keeps running.
+- `q` / `Ctrl+C` — quit
 
 Examples:
 
@@ -59,6 +70,7 @@ Examples:
 cyber-timer 25
 cyber-timer 90s --title "BREAK"
 cyber-timer 1h --silent
+cyber-timer 45m --invert
 cyber-timer stopwatch
 cyber-timer sw --title "LAP"
 ```
