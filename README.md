@@ -74,20 +74,20 @@ Stopped — elapsed 00:03:47
 
 ### The slime
 
-A slime hops along the floor of the box while the timer runs. It is built from
-the same tiles as the digits, and its two eyes are simply left unpainted so the
-background shows through them.
+A small slime wanders along the floor of the box while the timer runs. It is
+built from the same tiles as the digits, and its two eyes are simply left
+unpainted so the background shows through them.
 
 ```
-  ████████████        ████████████
-  ██  ████  ██        ████████████
-  ████████████        ████████████
-     hopping             asleep
+  ██████          ██████
+  █ ██ █          ██████
+  ██████          ██████
+   awake           asleep
 ```
 
-It squashes and stretches as it bounces wall to wall, blinks now and then, and
-curls up with its eyes shut while the timer is paused. Hide it with
-`--no-slime`.
+It moves by random walk, so it drifts around instead of pacing a fixed route.
+It blinks now and then, and shuts its eyes and stays put while the timer is
+paused. Hide it with `--no-slime`.
 
 ### Themes
 
