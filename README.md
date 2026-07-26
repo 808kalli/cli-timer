@@ -72,6 +72,23 @@ Stopped — elapsed 00:03:47
   LAP 04  00:03:25  +00:00:47
 ```
 
+### The slime
+
+A slime hops along the floor of the box while the timer runs. It is built from
+the same tiles as the digits, and its two eyes are simply left unpainted so the
+background shows through them.
+
+```
+  ████████████        ████████████
+  ██  ████  ██        ████████████
+  ████████████        ████████████
+     hopping             asleep
+```
+
+It squashes and stretches as it bounces wall to wall, blinks now and then, and
+curls up with its eyes shut while the timer is paused. Hide it with
+`--no-slime`.
+
 ### Themes
 
 `Tab` flips between the default theme — muted ember drawn straight onto your
@@ -108,6 +125,7 @@ Quitting early prints how much time was left (countdown) or how long it ran
 | `-t, --title <text>` | label in the title bar (default `CYBER TIMER` / `STOPWATCH`)  |
 | `-s, --silent`       | disable the completion beep (countdown only)                  |
 | `-i, --invert`       | start in the flipped panel theme                              |
+| `--no-slime`         | hide the hopping slime                                        |
 | `-h, --help`         | show help                                                     |
 
 ```bash
