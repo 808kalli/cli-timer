@@ -82,16 +82,21 @@ the flipped theme with `--invert`.
 
 ## Keys
 
-| Key      | Action                                             |
-| -------- | -------------------------------------------------- |
-| `Enter`  | record a lap (listed bottom-left, printed on exit)  |
-| `Space`  | pause / resume                                      |
-| `Tab`    | flip between the default and panel theme            |
-| `q`      | quit                                                |
-| `Ctrl+C` | quit                                                |
+| Key         | Action                                             |
+| ----------- | -------------------------------------------------- |
+| `Enter`     | record a lap (listed bottom-left, printed on exit) |
+| `Space`     | pause / resume                                     |
+| `Backspace` | reset and clear laps                               |
+| `Tab`       | flip between the default and panel theme           |
+| `q`         | quit                                               |
+| `Ctrl+C`    | quit                                               |
 
 Pausing works in both modes and freezes the clock outright — a countdown
 paused for a minute still has the same time left when you resume.
+
+Backspace sends the stopwatch back to `00:00:00` and a countdown back to its
+full duration, clearing any recorded laps along with it. The reset laps are
+gone for good, so they will not appear in the summary printed on exit.
 
 Quitting early prints how much time was left (countdown) or how long it ran
 (stopwatch).
