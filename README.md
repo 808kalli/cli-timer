@@ -55,7 +55,7 @@ it waits for a keypress so a finished timer never disappears unnoticed.
 cyber-timer stopwatch
 ```
 
-Counts up from zero with no upper bound. Press `Space` to record laps, which
+Counts up from zero with no upper bound. Press `Enter` to record laps, which
 are listed in the bottom-left with the split from the previous lap.
 
 ![Stopwatch with laps](docs/stopwatch_laps.png)
@@ -84,10 +84,14 @@ the flipped theme with `--invert`.
 
 | Key      | Action                                             |
 | -------- | -------------------------------------------------- |
-| `Space`  | record a lap (listed bottom-left, printed on exit)  |
+| `Enter`  | record a lap (listed bottom-left, printed on exit)  |
+| `Space`  | pause / resume                                      |
 | `Tab`    | flip between the default and panel theme            |
 | `q`      | quit                                                |
 | `Ctrl+C` | quit                                                |
+
+Pausing works in both modes and freezes the clock outright — a countdown
+paused for a minute still has the same time left when you resume.
 
 Quitting early prints how much time was left (countdown) or how long it ran
 (stopwatch).
