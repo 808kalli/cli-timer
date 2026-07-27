@@ -166,11 +166,13 @@ follows the clock straight through a suspend or a manual time change.
 ![Clock](docs/clock.png)
 
 The date takes only the width left spare beside the digits, so it never costs
-the clock a size step, and it shortens as the terminal narrows:
+the clock a size step. As the terminal narrows it stays on one line for as
+long as it fits, then wraps onto two before any of the wording is given up,
+and only then shortens:
 
 ```
-Monday        Monday      Mon
-Jul 27 2026   Jul 27      Jul 27
+Monday | Jul 27 2026     Monday        Monday      Mon
+                         Jul 27 2026   Jul 27      Jul 27
 ```
 
 Below that it is dropped rather than shrinking the clock.
