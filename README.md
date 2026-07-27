@@ -120,16 +120,19 @@ It squashes and stretches through the jump rather than sliding up as a rigid
 block:
 
 ```
-                      ████████  ████████
-  ████████            ████████  ████████            ████████
-  ████████  ████████  ██ ██ ██  ██ ██ ██            ████████
-  ██ ██ ██  ██ ██ ██  ████████  ████████  ████████  ██ ██ ██
-  ████████  ████████  ████████            ██ ██ ██  ████████
-                                          ████████
- ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔
-  noticed    crouch   stretch    in the    lands     back to
-    you                           air                normal
+                          ████████  ████████
+  ████████                ████████  ████████                ████████
+  ████████  ████████      ██ ██ ██  █  ██  █                ████████
+  ██ ██ ██  ██ ██ ██      ████████  ████████    ████████    ██ ██ ██
+  ████████  ████████      ████████              ██ ██ ██    ████████
+                                        HI!     ████████
+ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔     ▔▔▔▔▔▔▔▔▔     ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔  ▔▔▔▔▔▔▔▔▔
+  noticed    crouch       stretch       in the     lands     back to
+    you                                  air                 normal
 ```
+
+At the top of the arc its eyes go wide and it throws a `HI!` up and to its
+left — flipping to its right if it is jumping too close to the wall.
 
 Terminals have no hover event, so this is synthesised from mouse motion
 reports: the app enables `?1003h` (report all motion) with `?1006h` (SGR
