@@ -116,14 +116,19 @@ Point at the slime and it startles: it stops and looks straight at you for a
 moment, jumps a block into the air, hangs there for half a second, then drops
 back down. It keeps watching you until you move away.
 
+It squashes and stretches through the jump rather than sliding up as a rigid
+block:
+
 ```
-  ████████                          ████████
-  ████████     jumps    ████████    ████████
-  ██ ██ ██      ──▶     ████████    ██ ██ ██
-  ████████              ██ ██ ██    ████████
- ▔▔▔▔▔▔▔▔▔▔            ████████    ▔▔▔▔▔▔▔▔▔▔
-   noticed            ▔▔▔▔▔▔▔▔▔▔      lands
-     you               in the air
+                      ████████  ████████
+  ████████            ████████  ████████            ████████
+  ████████  ████████  ██ ██ ██  ██ ██ ██            ████████
+  ██ ██ ██  ██ ██ ██  ████████  ████████  ████████  ██ ██ ██
+  ████████  ████████  ████████            ██ ██ ██  ████████
+                                          ████████
+ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔ ▔▔▔▔▔▔▔▔▔
+  noticed    crouch   stretch    in the    lands     back to
+    you                           air                normal
 ```
 
 Terminals have no hover event, so this is synthesised from mouse motion
