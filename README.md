@@ -28,6 +28,7 @@ npx github:808kalli/cli-timer 25
 ```bash
 cyber-timer <duration> [options]   # countdown
 cyber-timer stopwatch [options]    # count up (alias: sw)
+cyber-timer clock [options]        # the current time of day
 ```
 
 ### Countdown
@@ -150,6 +151,22 @@ While tracking is on, click-and-drag text selection is captured by the app.
 Most terminals still allow selection with a modifier held (`Shift` on
 xterm/VTE, `Option` on iTerm2). Pass `--no-mouse` to turn tracking off
 entirely and get normal selection back.
+
+### Clock
+
+```bash
+cyber-timer clock
+```
+
+Shows your machine's current time of day, 24-hour, as `hh:mm:ss`. The time is
+read from the system clock on every repaint rather than counted internally, so
+it can never drift away from it and it follows the clock straight through a
+suspend or a manual time change.
+
+![Clock](docs/clock.png)
+
+Lapping, pausing and resetting mean nothing against wall time, so those keys do
+nothing here — only `Tab` and `q` apply. Quitting prints no summary.
 
 ### Themes
 
