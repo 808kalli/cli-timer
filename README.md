@@ -158,12 +158,22 @@ entirely and get normal selection back.
 cyber-timer clock
 ```
 
-Shows your machine's current time of day, 24-hour, as `hh:mm:ss`. The time is
-read from the system clock on every repaint rather than counted internally, so
-it can never drift away from it and it follows the clock straight through a
-suspend or a manual time change.
+Shows your machine's current time of day, 24-hour, as `hh:mm:ss`, with the day
+and date to its left. The time is read from the system clock on every repaint
+rather than counted internally, so it can never drift away from it and it
+follows the clock straight through a suspend or a manual time change.
 
 ![Clock](docs/clock.png)
+
+The date takes only the width left spare beside the digits, so it never costs
+the clock a size step, and it shortens as the terminal narrows:
+
+```
+Monday        Monday      Mon
+Jul 27 2026   Jul 27      Jul 27
+```
+
+Below that it is dropped rather than shrinking the clock.
 
 Lapping, pausing and resetting mean nothing against wall time, so those keys do
 nothing here — only `Tab` and `q` apply. Quitting prints no summary.
