@@ -60,6 +60,13 @@ are listed in the bottom-left with the split from the previous lap.
 
 ![Stopwatch with laps](docs/stopwatch_laps.png)
 
+Nothing is persisted between runs, but `--from` seeds the starting time, which
+is enough to hand a running stopwatch over to a new terminal:
+
+```bash
+cyber-timer stopwatch --from 49m29s
+```
+
 The six most recent laps stay on screen, and the digits shrink to make room
 rather than being pushed off-center. The **full** list is printed to your
 terminal on exit, so nothing is lost when the display closes:
@@ -172,6 +179,7 @@ Quitting early prints how much time was left (countdown) or how long it ran
 | `-t, --title <text>` | label in the title bar (default `CYBER TIMER` / `STOPWATCH`)  |
 | `-s, --silent`       | disable the completion beep (countdown only)                  |
 | `-i, --invert`       | start in the flipped panel theme                              |
+| `--from <duration>`  | start the stopwatch already at this time                      |
 | `--no-slime`         | hide the slime                                                |
 | `--no-mouse`         | disable mouse tracking (no hover, normal text selection)      |
 | `-h, --help`         | show help                                                     |
